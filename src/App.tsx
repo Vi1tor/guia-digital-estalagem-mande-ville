@@ -96,21 +96,21 @@ export default function App() {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#F7F4EE] text-[#1C1917]">
+    <div className="min-h-dvh flex flex-col overflow-x-clip bg-[#F7F4EE] text-[#1C1917] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       {/* Sticky Top Bar (Shown on Menu and Detail views, adhering to 3-Zone Top Bar Contract) */}
       {view !== 'home' && (
-        <header className="sticky top-0 z-30 h-14 bg-[#F7F4EE]/92 backdrop-blur-md border-b border-[#E5DEC9] px-4 sm:px-8 flex items-center justify-between gap-4">
+        <header className="sticky top-0 z-30 box-content h-14 pt-[env(safe-area-inset-top)] bg-[#F7F4EE]/92 backdrop-blur-md border-b border-[#E5DEC9] px-4 sm:px-8 flex items-center justify-between gap-3">
           {/* Zone 1: Single text element Brand Wordmark */}
           <button
             type="button"
             onClick={handleGoHome}
-            className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-[#1E2F23] hover:text-[#6E472B] transition-colors whitespace-nowrap cursor-pointer text-left"
+            className="min-w-0 truncate font-display text-lg sm:text-2xl font-semibold tracking-tight text-[#1E2F23] hover:text-[#6E472B] transition-colors cursor-pointer text-left"
           >
             Estalagem Mande Ville
           </button>
 
           {/* Zone 2: 5 clean single-line navigation links */}
-          <nav className="hidden md:flex items-center gap-6 text-xs font-medium text-[#57534E]">
+          <nav className="hidden xl:flex items-center gap-6 text-xs font-medium text-[#57534E]">
             <button
               type="button"
               onClick={handleGoHome}
@@ -164,25 +164,28 @@ export default function App() {
 
           {/* Zone 3: 1–2 Primary Actions (Shortcut to Main Menu / Home + PWA Install) */}
           <div className="flex items-center gap-2 shrink-0">
-            <PWAInstallButton />
+            <div className="hidden sm:block">
+              <PWAInstallButton />
+            </div>
             {view === 'detail' ? (
               <button
                 type="button"
                 onClick={handleBackToMenu}
                 aria-label="Voltar ao Menu Principal"
-                className="min-h-[40px] flex items-center gap-1.5 rounded-lg bg-[#EFECE4] hover:bg-[#E5DEC9] px-3 py-2 text-xs font-semibold text-[#1E2F23] transition-colors whitespace-nowrap cursor-pointer"
+                className="min-h-[44px] flex items-center gap-1.5 rounded-lg bg-[#EFECE4] hover:bg-[#E5DEC9] px-3 py-2 text-xs font-semibold text-[#1E2F23] transition-colors whitespace-nowrap cursor-pointer"
               >
-                <SquaresFourIcon className="w-3.5 h-3.5 text-[#6E472B]" />
-                <span>Menu Principal</span>
+                <SquaresFourIcon className="w-4 h-4 text-[#6E472B]" />
+                <span className="sm:hidden">Menu</span>
+                <span className="hidden sm:inline">Menu Principal</span>
               </button>
             ) : (
               <button
                 type="button"
                 onClick={handleGoHome}
                 aria-label="Voltar para a Tela Inicial"
-                className="min-h-[40px] flex items-center gap-1.5 rounded-lg bg-[#EFECE4] hover:bg-[#E5DEC9] px-3 py-2 text-xs font-semibold text-[#1E2F23] transition-colors whitespace-nowrap cursor-pointer"
+                className="min-h-[44px] flex items-center gap-1.5 rounded-lg bg-[#EFECE4] hover:bg-[#E5DEC9] px-3 py-2 text-xs font-semibold text-[#1E2F23] transition-colors whitespace-nowrap cursor-pointer"
               >
-                <HouseIcon className="w-3.5 h-3.5 text-[#6E472B]" />
+                <HouseIcon className="w-4 h-4 text-[#6E472B]" />
                 <span>Início</span>
               </button>
             )}
@@ -205,17 +208,17 @@ export default function App() {
               <HeroCarousel>
 
               {/* Top Subtle Bar on Hero */}
-              <div className="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 pt-6 flex items-center justify-between gap-4">
+              <div className="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 pt-[calc(1.25rem+env(safe-area-inset-top))] sm:pt-[calc(1.5rem+env(safe-area-inset-top))] flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2 text-xs font-medium text-[#E5DEC9]/90 tracking-wide">
                   <span>Monte Verde, MG</span>
-                  <span aria-hidden="true">·</span>
-                  <span>Serra da Mantiqueira</span>
+                  <span aria-hidden="true" className="hidden sm:inline">·</span>
+                  <span className="hidden sm:inline">Serra da Mantiqueira</span>
                 </div>
                 <PWAInstallButton />
               </div>
 
               {/* Center Hero Content */}
-              <div className="relative z-10 max-w-3xl w-full mx-auto px-5 sm:px-8 my-auto py-12 text-center">
+              <div className="relative z-10 max-w-3xl w-full mx-auto px-5 sm:px-8 my-auto py-10 sm:py-12 text-center">
                 <div className="mb-6 flex justify-center">
                   <WeatherWidget variant="chip" />
                 </div>
@@ -230,7 +233,7 @@ export default function App() {
 
                 <div className="w-16 h-[1px] bg-[#C5A059]/70 mx-auto my-6" />
 
-                <p className="text-base sm:text-lg text-[#EFECE4]/95 max-w-xl mx-auto leading-relaxed font-normal">
+                <p className="text-[15px] sm:text-lg text-[#EFECE4]/95 max-w-xl mx-auto leading-relaxed font-normal">
                   Sejam muito bem-vindos! Preparamos este guia digital com todas as informações importantes para tornar sua estadia em nosso chalé ainda mais confortável.
                 </p>
 
@@ -238,7 +241,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setView('menu')}
-                    className="min-h-[52px] inline-flex items-center justify-center gap-2.5 rounded-xl bg-transparent hover:bg-[#F7F4EE]/10 border border-[#F7F4EE]/70 hover:border-[#F7F4EE] text-[#F7F4EE] px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide transition-colors duration-150 active:scale-98 cursor-pointer whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E6C786]"
+                    className="min-h-[52px] w-full sm:w-auto max-w-xs inline-flex items-center justify-center gap-2.5 rounded-xl bg-transparent hover:bg-[#F7F4EE]/10 border border-[#F7F4EE]/70 hover:border-[#F7F4EE] text-[#F7F4EE] px-8 py-3.5 text-sm sm:text-base font-semibold tracking-wide transition-colors duration-150 active:scale-98 cursor-pointer whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E6C786]"
                   >
                     <span>Ver Informações</span>
                     <CaretRightIcon className="w-4 h-4" />
@@ -250,7 +253,7 @@ export default function App() {
 
               {/* Bottom Hero Quick Reference Bar */}
               <div className="relative z-10 border-t border-[#F7F4EE]/15 bg-[#0F1712]/70 backdrop-blur-md">
-                <div className="max-w-5xl mx-auto pl-5 pr-20 sm:pl-8 sm:pr-24 py-4 flex flex-wrap items-center justify-start sm:justify-between gap-x-6 gap-y-2 text-xs text-[#D8CFBE]">
+                <div className="max-w-5xl mx-auto pl-5 pr-20 sm:pl-8 sm:pr-24 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] flex flex-wrap items-center justify-start sm:justify-between gap-x-6 gap-y-2 text-xs text-[#D8CFBE]">
                   <div className="flex items-center gap-2">
                     <span className="text-[#E6C786] font-medium">Check-in:</span>
                     <span className="font-mono tabular-nums">15h00</span>
@@ -278,10 +281,10 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-5xl mx-auto px-4 sm:px-8 pt-8 pb-28"
+              className="max-w-5xl mx-auto px-4 sm:px-8 pt-5 sm:pt-8 pb-28"
             >
               {/* Welcome Editorial Banner */}
-              <div className="rounded-2xl bg-[#1E2F23] text-[#F7F4EE] p-6 sm:p-8 border border-[#2E4635]">
+              <div className="rounded-2xl bg-[#1E2F23] text-[#F7F4EE] p-5 sm:p-8 border border-[#2E4635]">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div className="max-w-2xl">
                     <div className="flex items-center gap-2 text-xs text-[#E6C786] font-medium">
@@ -289,7 +292,7 @@ export default function App() {
                       <span aria-hidden="true">·</span>
                       <span>Monte Verde, MG</span>
                     </div>
-                    <h1 className="font-display text-3xl sm:text-4xl font-semibold mt-1 text-[#F7F4EE]">
+                    <h1 className="font-display text-[28px] leading-tight sm:text-4xl font-semibold mt-1 text-[#F7F4EE]">
                       {POUSADA_INFO.welcomeTitle}
                     </h1>
                     <p className="mt-2 text-sm sm:text-base text-[#D8CFBE] leading-relaxed">
@@ -310,28 +313,20 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Essential Times Unboxed Metadata Strip */}
-                <div className="mt-6 pt-5 border-t border-[#F7F4EE]/15 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#EFECE4]">
-                  <div>
-                    <span className="text-[#E6C786]">Check-in:</span>{' '}
-                    <span className="font-mono tabular-nums font-medium">15h00</span>
-                  </div>
-                  <span aria-hidden="true" className="text-[#F7F4EE]/30">·</span>
-                  <div>
-                    <span className="text-[#E6C786]">Check-out:</span>{' '}
-                    <span className="font-mono tabular-nums font-medium">Até 12h00</span>
-                  </div>
-                  <span aria-hidden="true" className="text-[#F7F4EE]/30">·</span>
-                  <div>
-                    <span className="text-[#E6C786]">Café da manhã:</span>{' '}
-                    <span className="font-mono tabular-nums font-medium">08h30 – 10h30</span>
-                  </div>
-                  <span aria-hidden="true" className="text-[#F7F4EE]/30">·</span>
-                  <div>
-                    <span className="text-[#E6C786]">Arrumação:</span>{' '}
-                    <span className="font-mono tabular-nums font-medium">Chave até 13h30</span>
-                  </div>
-                </div>
+                {/* Essential Times: 2x2 grid on phones, inline strip from sm */}
+                <dl className="mt-5 sm:mt-6 pt-5 border-t border-[#F7F4EE]/15 grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2 text-xs text-[#EFECE4]">
+                  {[
+                    ['Check-in', '15h00'],
+                    ['Check-out', 'Até 12h00'],
+                    ['Café da manhã', '08h30 – 10h30'],
+                    ['Arrumação', 'Chave até 13h30'],
+                  ].map(([label, value]) => (
+                    <div key={label} className="flex flex-col gap-0.5 sm:flex-row sm:gap-1">
+                      <dt className="text-[#E6C786]">{label}:</dt>
+                      <dd className="font-mono tabular-nums font-medium">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
 
               <div className="mt-6">
@@ -346,9 +341,9 @@ export default function App() {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Buscar informação (ex.: Wi-Fi, frigobar, lenha, correios, horários)..."
+                    placeholder="Buscar: Wi-Fi, café, lenha…"
                     aria-label="Buscar informações no guia do hóspede"
-                    className="w-full min-h-[48px] pl-11 pr-10 py-2.5 rounded-xl bg-white border border-[#D8CFBE] text-sm text-[#1C1917] placeholder:text-[#A8A29E] focus:border-[#1E2F23] focus:outline-none transition-colors"
+                    className="w-full min-h-[48px] pl-11 pr-12 py-2.5 rounded-xl bg-white border border-[#D8CFBE] text-base sm:text-sm text-[#1C1917] placeholder:text-[#A8A29E] focus:border-[#1E2F23] focus:outline-none transition-colors"
                   />
                   {searchQuery && (
                     <button
@@ -366,7 +361,7 @@ export default function App() {
               {/* Category Cards Grid */}
               <div className="mt-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-semibold text-[#1E2F23]">
+                  <h2 className="text-[22px] sm:text-2xl font-semibold text-[#1E2F23]">
                     Categorias do Guia
                   </h2>
                   <span className="text-xs text-[#78716C] font-mono tabular-nums">
@@ -391,7 +386,7 @@ export default function App() {
                     </button>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {filteredCategories.map((category) => {
                       const IconComponent = CATEGORY_ICONS[category.id];
 
@@ -400,7 +395,7 @@ export default function App() {
                           key={category.id}
                           type="button"
                           onClick={() => handleOpenCategory(category.id)}
-                          className="group text-left rounded-2xl bg-white border border-[#E5DEC9] hover:border-[#6E472B] p-5 transition-all duration-150 hover:-translate-y-0.5 flex flex-col justify-between min-h-[156px] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E2F23]"
+                          className="group text-left rounded-2xl bg-white border border-[#E5DEC9] hover:border-[#6E472B] p-4 sm:p-5 transition-all duration-150 hover:-translate-y-0.5 flex flex-col justify-between sm:min-h-[156px] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E2F23]"
                         >
                           <div>
                             <div className="flex items-center justify-between gap-3">
@@ -414,7 +409,7 @@ export default function App() {
                               </div>
                             </div>
 
-                            <h3 className="text-xl font-semibold text-[#1E2F23] mt-4 group-hover:text-[#6E472B] transition-colors">
+                            <h3 className="text-xl font-semibold text-[#1E2F23] mt-3 sm:mt-4 group-hover:text-[#6E472B] transition-colors">
                               {category.title}
                             </h3>
                             <p className="text-xs text-[#57534E] mt-1 leading-relaxed">
@@ -422,7 +417,7 @@ export default function App() {
                             </p>
                           </div>
 
-                          <div className="mt-4 pt-3 border-t border-[#F7F4EE] flex items-center justify-between text-xs text-[#6E472B] font-medium">
+                          <div className="mt-3 sm:mt-4 pt-3 border-t border-[#F7F4EE] flex items-center justify-between text-xs text-[#6E472B] font-medium">
                             <span className="truncate">{category.quickHighlight}</span>
                           </div>
                         </button>
@@ -554,7 +549,7 @@ export default function App() {
 
       {/* Quiet Footer when not on full-screen Home */}
       {view !== 'home' && (
-        <footer className="border-t border-[#E5DEC9] bg-[#EFECE4]/60 py-6 px-4 sm:px-8 text-center text-xs text-[#78716C]">
+        <footer className="border-t border-[#E5DEC9] bg-[#EFECE4]/60 pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:pb-6 px-4 sm:px-8 text-center text-xs text-[#78716C]">
           <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
             <span className="font-display text-base font-semibold text-[#1E2F23]">
               Estalagem Mande Ville · Monte Verde, MG
