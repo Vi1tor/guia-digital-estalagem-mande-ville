@@ -684,7 +684,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                   href={LOCATION_INFO.wazeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[52px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E2F23] hover:bg-[#263B2C] px-5 py-3 text-sm font-semibold text-[#F7F4EE] transition-colors whitespace-nowrap"
+                  className="min-h-[52px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E2F23] hover:bg-[#263B2C] px-5 py-3 text-sm font-semibold text-[#F7F4EE] transition-colors text-center"
                 >
                   <WazeIcon className="w-5 h-5 text-[#33CCFF]" />
                   <span>Ir com o Waze</span>
@@ -694,7 +694,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                   href={LOCATION_INFO.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[52px] inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-[#EFECE4] border border-[#D8CFBE] px-5 py-3 text-sm font-semibold text-[#1E2F23] transition-colors whitespace-nowrap"
+                  className="min-h-[52px] inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-[#EFECE4] border border-[#D8CFBE] px-5 py-3 text-sm font-semibold text-[#1E2F23] transition-colors text-center"
                 >
                   <GoogleMapsIcon className="w-5 h-5 text-[#4285F4]" />
                   <span>Ir com o Google Maps</span>

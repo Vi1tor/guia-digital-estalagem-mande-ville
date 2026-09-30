@@ -82,7 +82,7 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({
   return (
     <>
       {/* Floating Action Button */}
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-40">
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Contato rápido com a recepção via WhatsApp"
@@ -99,7 +99,10 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({
           onClick={handleClose}
         >
           <div
-            className="w-full max-w-md rounded-t-3xl sm:rounded-2xl bg-[#F7F4EE] border-t sm:border border-[#D8CFBE] p-6 shadow-2xl text-[#1C1917]"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Atendimento ao hóspede via WhatsApp"
+            className="w-full max-w-md max-h-[92dvh] overflow-y-auto overscroll-contain rounded-t-3xl sm:rounded-2xl bg-[#F7F4EE] border-t sm:border border-[#D8CFBE] px-5 pt-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sm:p-6 shadow-2xl text-[#1C1917]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Drag handle on mobile */}
@@ -134,7 +137,7 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({
                 value={chaleNumber}
                 onChange={(e) => setChaleNumber(e.target.value)}
                 placeholder="Ex.: Chalé 03"
-                className="w-full min-h-[44px] rounded-xl border border-[#D8CFBE] bg-white px-3.5 py-2 text-sm text-[#1C1917] placeholder:text-[#A8A29E] focus:border-[#1E2F23] focus:outline-none"
+                className="w-full min-h-[44px] rounded-xl border border-[#D8CFBE] bg-white px-3.5 py-2 text-base sm:text-sm text-[#1C1917] placeholder:text-[#A8A29E] focus:border-[#1E2F23] focus:outline-none"
               />
             </div>
 

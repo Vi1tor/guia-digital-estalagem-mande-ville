@@ -509,7 +509,7 @@ export default function App() {
                     href={LOCATION_INFO.wazeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="min-h-[48px] inline-flex items-center justify-center gap-2.5 rounded-xl bg-white hover:bg-[#F7F4EE] border border-[#D8CFBE] px-4 py-2.5 text-sm font-semibold text-[#1E2F23] transition-colors whitespace-nowrap"
+                    className="min-h-[48px] inline-flex items-center justify-center gap-2.5 rounded-xl bg-white hover:bg-[#F7F4EE] border border-[#D8CFBE] px-4 py-2.5 text-sm font-semibold text-[#1E2F23] transition-colors text-center"
                   >
                     <WazeIcon className="w-5 h-5 text-[#33CCFF]" />
                     <span>Ir com o Waze</span>
@@ -518,7 +518,7 @@ export default function App() {
                     href={LOCATION_INFO.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="min-h-[48px] inline-flex items-center justify-center gap-2.5 rounded-xl bg-white hover:bg-[#F7F4EE] border border-[#D8CFBE] px-4 py-2.5 text-sm font-semibold text-[#1E2F23] transition-colors whitespace-nowrap"
+                    className="min-h-[48px] inline-flex items-center justify-center gap-2.5 rounded-xl bg-white hover:bg-[#F7F4EE] border border-[#D8CFBE] px-4 py-2.5 text-sm font-semibold text-[#1E2F23] transition-colors text-center"
                   >
                     <GoogleMapsIcon className="w-5 h-5 text-[#4285F4]" />
                     <span>Ir com o Google Maps</span>

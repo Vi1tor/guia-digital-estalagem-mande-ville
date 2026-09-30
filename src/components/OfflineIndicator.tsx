@@ -13,7 +13,7 @@ export const OfflineIndicator: React.FC = () => {
     <div
       role="status"
       aria-live="polite"
-      className="fixed bottom-20 left-4 z-40 flex items-center gap-2 rounded-xl bg-[#6E472B] px-3.5 py-2 text-xs font-medium text-[#F7F4EE] shadow-lg"
+      className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] left-4 right-4 sm:right-auto z-40 flex items-center gap-2 rounded-xl bg-[#6E472B] px-3.5 py-2 text-xs font-medium text-[#F7F4EE] shadow-lg"
     >
       <WifiSlashIcon className="w-3.5 h-3.5 text-[#E6C786] shrink-0" />
       <span>Modo Offline · Guia disponível para consulta</span>
