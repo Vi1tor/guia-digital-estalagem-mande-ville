@@ -121,9 +121,9 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
   const nextCategory = GUIDE_CATEGORIES[(currentIndex + 1) % GUIDE_CATEGORIES.length];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-6 pb-24">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-24">
       {/* Top Back Navigation Bar */}
-      <div className="flex items-center justify-between gap-4 pb-6 border-b border-[#E5DEC9]">
+      <div className="flex items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-[#E5DEC9]">
         <button
           type="button"
           onClick={onBackToMenu}
@@ -139,27 +139,27 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
       </div>
 
       {/* Category Header */}
-      <div className="mt-6">
-        <div className="flex items-center gap-2 text-xs text-[#6E472B] font-medium">
+      <div className="mt-5 sm:mt-6">
+        <div className="flex flex-wrap items-center gap-x-2 text-xs text-[#6E472B] font-medium">
           <span className="font-mono">{currentCategory.number}.</span>
           <span>·</span>
           <span>Estalagem Mandeville</span>
           <span>·</span>
           <span>Guia do Hóspede</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-semibold text-[#1E2F23] mt-1 tracking-tight">
+        <h1 className="text-[28px] leading-tight sm:text-4xl font-semibold text-[#1E2F23] mt-1 tracking-tight">
           {currentCategory.title}
         </h1>
-        <p className="text-base text-[#57534E] mt-1.5 leading-relaxed">
+        <p className="text-[15px] sm:text-base text-[#57534E] mt-1.5 leading-relaxed">
           {currentCategory.subtitle}
         </p>
       </div>
 
       {/* Category Specific Content */}
-      <div className="mt-8 space-y-6">
+      <div className="mt-6 sm:mt-8 space-y-6">
         {categoryId === 'checkin-checkout' && (
           <>
-            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-6 sm:p-8">
+            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
               <div className="flex items-start gap-3.5">
                 <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center text-[#1E2F23] shrink-0">
                   <CallBellIcon className="w-5 h-5 text-[#6E472B]" />
@@ -221,7 +221,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
 
         {categoryId === 'wifi' && (
           <>
-            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-6 sm:p-8 space-y-6">
+            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8 space-y-6">
               <div className="flex items-start gap-3.5">
                 <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center shrink-0">
                   <WifiHighIcon className="w-5 h-5 text-[#1E2F23]" />
@@ -243,68 +243,64 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                   return (
                     <div
                       key={net.id}
-                      className="rounded-xl bg-[#F7F4EE] border border-[#D8CFBE] p-5"
+                      className="rounded-xl bg-[#F7F4EE] border border-[#D8CFBE] p-4 sm:p-5"
                     >
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="flex items-center gap-2 text-xs text-[#6E472B] font-medium">
-                          <span className="font-mono">Rede 0{idx + 1}</span>
-                          <span>·</span>
-                          <span>{net.coverage}</span>
-                        </div>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-[#6E472B] font-medium">
+                        <span className="font-mono">Rede 0{idx + 1}</span>
+                        <span aria-hidden="true">·</span>
+                        <span>{net.coverage}</span>
                       </div>
 
-                      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div className="bg-white rounded-lg p-3.5 border border-[#E5DEC9] flex items-center justify-between gap-2">
-                          <div className="min-w-0">
-                            <div className="text-[11px] text-[#78716C]">Nome da Rede (SSID)</div>
-                            <div className="font-mono text-sm sm:text-base font-semibold text-[#1C1917] truncate mt-0.5">
-                              {net.ssid}
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleCopy(net.ssid, ssidKey)}
-                            className="min-h-[40px] px-3 py-1.5 rounded-lg text-xs font-medium bg-[#EFECE4] hover:bg-[#E5DEC9] text-[#1E2F23] flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
-                          >
-                            {copiedKey === ssidKey ? (
-                              <>
-                                <CheckIcon className="w-3.5 h-3.5 text-[#1E5E3A]" />
-                                <span>Copiado</span>
-                              </>
-                            ) : (
-                              <>
-                                <CopyIcon className="w-3.5 h-3.5 text-[#6E472B]" />
-                                <span>Rede</span>
-                              </>
-                            )}
-                          </button>
+                      <dl className="mt-3 rounded-lg bg-white border border-[#E5DEC9] p-3.5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="min-w-0">
+                          <dt className="text-[11px] text-[#78716C]">Nome da Rede (SSID)</dt>
+                          <dd className="font-mono text-base font-semibold text-[#1C1917] break-all mt-0.5">
+                            {net.ssid}
+                          </dd>
                         </div>
+                        <div className="min-w-0">
+                          <dt className="text-[11px] text-[#78716C]">Senha de Acesso</dt>
+                          <dd className="font-mono text-base font-semibold text-[#1E2F23] break-all mt-0.5">
+                            {net.password}
+                          </dd>
+                        </div>
+                      </dl>
 
-                        <div className="bg-white rounded-lg p-3.5 border border-[#E5DEC9] flex items-center justify-between gap-2">
-                          <div className="min-w-0">
-                            <div className="text-[11px] text-[#78716C]">Senha de Acesso</div>
-                            <div className="font-mono text-sm sm:text-base font-semibold text-[#1E2F23] truncate mt-0.5">
-                              {net.password}
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleCopy(net.password, passKey)}
-                            className="min-h-[40px] px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-[#1E2F23] hover:bg-[#263B2C] text-[#F7F4EE] flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
-                          >
-                            {copiedKey === passKey ? (
-                              <>
-                                <CheckIcon className="w-3.5 h-3.5 text-[#C5A059]" />
-                                <span>Copiada!</span>
-                              </>
-                            ) : (
-                              <>
-                                <CopyIcon className="w-3.5 h-3.5 text-[#C5A059]" />
-                                <span>Copiar Senha</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
+                      <div className="mt-3 grid grid-cols-2 gap-2.5">
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(net.ssid, ssidKey)}
+                          className="min-h-[44px] px-3 py-2 rounded-lg text-xs font-medium bg-white border border-[#D8CFBE] hover:bg-[#EFECE4] text-[#1E2F23] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                        >
+                          {copiedKey === ssidKey ? (
+                            <>
+                              <CheckIcon className="w-4 h-4 text-[#1E5E3A]" />
+                              <span>Copiado</span>
+                            </>
+                          ) : (
+                            <>
+                              <CopyIcon className="w-4 h-4 text-[#6E472B]" />
+                              <span>Copiar rede</span>
+                            </>
+                          )}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(net.password, passKey)}
+                          className="min-h-[44px] px-3 py-2 rounded-lg text-xs font-semibold bg-[#1E2F23] hover:bg-[#263B2C] text-[#F7F4EE] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                        >
+                          {copiedKey === passKey ? (
+                            <>
+                              <CheckIcon className="w-4 h-4 text-[#C5A059]" />
+                              <span>Copiada!</span>
+                            </>
+                          ) : (
+                            <>
+                              <CopyIcon className="w-4 h-4 text-[#C5A059]" />
+                              <span>Copiar senha</span>
+                            </>
+                          )}
+                        </button>
                       </div>
 
                       <p className="mt-3 text-xs text-[#57534E]">{net.description}</p>
@@ -328,7 +324,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                 />
               </div>
 
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-2 text-xs text-[#6E472B] font-medium">
                   <CoffeeIcon className="w-4 h-4" />
                   <span>Salão de Café</span>
@@ -361,7 +357,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
 
         {categoryId === 'frigobar' && (
           <>
-            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-6 sm:p-8">
+            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-3.5">
                   <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center shrink-0">
@@ -385,20 +381,20 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                   return (
                     <div
                       key={item.id}
-                      className="py-4 flex items-center justify-between gap-4"
+                      className="py-4 flex items-center justify-between gap-3 sm:gap-4"
                     >
                       <div className="min-w-0 flex-1">
                         <div className="text-base font-medium text-[#1C1917]">
                           {item.name}
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-[#78716C] mt-0.5">
+                        <div className="flex flex-wrap items-center gap-x-2 text-xs text-[#78716C] mt-0.5">
                           <span>{item.volume}</span>
-                          <span>·</span>
+                          <span aria-hidden="true">·</span>
                           <span>{item.category}</span>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex flex-col items-end gap-1.5 sm:flex-row sm:items-center sm:gap-4 shrink-0">
                         <div className="font-mono text-base font-semibold text-[#1E2F23] tabular-nums whitespace-nowrap">
                           {item.priceFormatted}
                         </div>
@@ -410,20 +406,20 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                             onClick={() => updateMinibarCount(item.id, -1)}
                             disabled={count === 0}
                             aria-label={`Diminuir quantidade de ${item.name}`}
-                            className="w-8 h-8 rounded-lg flex items-center justify-center text-[#1C1917] hover:bg-white disabled:opacity-35 transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded-lg flex items-center justify-center text-[#1C1917] hover:bg-white disabled:opacity-35 transition-colors cursor-pointer"
                           >
-                            <MinusIcon className="w-3.5 h-3.5" />
+                            <MinusIcon className="w-4 h-4" />
                           </button>
-                          <span className="w-6 text-center font-mono text-xs font-semibold tabular-nums text-[#1E2F23]">
+                          <span className="w-7 text-center font-mono text-sm font-semibold tabular-nums text-[#1E2F23]" aria-live="polite">
                             {count}
                           </span>
                           <button
                             type="button"
                             onClick={() => updateMinibarCount(item.id, 1)}
                             aria-label={`Aumentar quantidade de ${item.name}`}
-                            className="w-8 h-8 rounded-lg flex items-center justify-center text-[#1C1917] hover:bg-white transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded-lg flex items-center justify-center text-[#1C1917] hover:bg-white transition-colors cursor-pointer"
                           >
-                            <PlusIcon className="w-3.5 h-3.5" />
+                            <PlusIcon className="w-4 h-4" />
                           </button>
                         </div>
                       </div>
@@ -480,7 +476,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                 />
               </div>
 
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-2 text-xs text-[#6E472B] font-medium">
                   <FireIcon className="w-4 h-4" />
                   <span>Clima de Montanha</span>
@@ -523,7 +519,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
 
         {categoryId === 'arrumacao' && (
           <>
-            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-6 sm:p-8">
+            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
               <div className="flex items-start gap-3.5">
                 <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center shrink-0">
                   <BedIcon className="w-5 h-5 text-[#1E2F23]" />
@@ -570,7 +566,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
 
         {categoryId === 'itens-esquecidos' && (
           <>
-            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-6 sm:p-8">
+            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
               {/* Warm Header with Luggage (Mala) & Magnifying Glass (Lupa) icons as requested */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#EFECE4] border border-[#D8CFBE] flex items-center justify-center shrink-0">
@@ -669,7 +665,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
               />
             </div>
 
-            <div className="p-6 sm:p-8">
+            <div className="p-5 sm:p-8">
               <div className="flex items-center gap-2 text-xs text-[#6E472B] font-medium">
                 <MapPinIcon className="w-4 h-4" />
                 <span>{LOCATION_INFO.region}</span>
@@ -711,7 +707,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
 
         {categoryId === 'resumo-geral' && (
           <>
-            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-6 sm:p-8 space-y-6">
+            <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8 space-y-6">
               <div className="text-center border-b border-[#EFECE4] pb-6">
                 <div className="inline-flex items-center gap-3 text-xs font-medium tracking-widest text-[#6E472B]">
                   <span aria-hidden="true" className="h-px w-8 bg-[#C5A059]" />
