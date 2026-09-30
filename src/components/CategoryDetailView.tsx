@@ -775,7 +775,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                   <p className="mt-2 text-sm text-[#44403C] leading-relaxed">
                     Para solicitar arrumação, pedimos a gentileza de deixar a chave na recepção até às <strong className="font-mono tabular-nums">13h30</strong>.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-[#E5DEC9] flex items-center justify-between text-sm">
+                  <div className="mt-4 pt-3 border-t border-[#E5DEC9] flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm">
                     <div>
                       <span className="text-[#57534E]">Check-in:</span>{' '}
                       <strong className="font-mono tabular-nums text-[#1E2F23]">15h00</strong>
@@ -794,24 +794,17 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                     <span>Wi-Fi</span>
                   </div>
                   <div className="mt-3 space-y-2.5 text-sm">
-                    <div className="flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[#57534E]">Rede:</span>{' '}
-                        <strong className="font-mono">Estalagemmandeville</strong>
+                    {WIFI_NETWORKS.map((net) => (
+                      <div key={net.id} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5">
+                        <div className="min-w-0 break-all">
+                          <span className="text-[#57534E]">Rede:</span>{' '}
+                          <strong className="font-mono">{net.ssid}</strong>
+                        </div>
+                        <div className="font-mono text-xs bg-white px-2.5 py-1 rounded border border-[#D8CFBE]">
+                          Senha: <strong>{net.password}</strong>
+                        </div>
                       </div>
-                      <div className="font-mono text-xs bg-white px-2.5 py-1 rounded border border-[#D8CFBE]">
-                        Senha: <strong>Ville123</strong>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between gap-2">
-                      <div>
-                        <span className="text-[#57534E]">Rede:</span>{' '}
-                        <strong className="font-mono">Starlink</strong>
-                      </div>
-                      <div className="font-mono text-xs bg-white px-2.5 py-1 rounded border border-[#D8CFBE]">
-                        Senha: <strong>a1314b**</strong>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
