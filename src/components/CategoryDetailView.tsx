@@ -209,7 +209,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectCategory('itens-esquecidos')}
-                  className="min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#EFECE4] hover:bg-[#E5DEC9] px-4 py-2.5 text-xs font-semibold text-[#1E2F23] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#EFECE4] hover:bg-[#E5DEC9] px-4 py-2.5 text-xs font-semibold text-[#1E2F23] transition-colors text-center shrink-0 cursor-pointer"
                 >
                   <SuitcaseRollingIcon className="w-4 h-4 text-[#6E472B]" />
                   <span>Ver Checklist de Saída</span>
@@ -454,7 +454,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenWhatsApp('frigobar')}
-                  className="min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E2F23] hover:bg-[#263B2C] px-4 py-2.5 text-xs font-semibold text-[#F7F4EE] transition-colors whitespace-nowrap cursor-pointer"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E2F23] hover:bg-[#263B2C] px-4 py-2.5 text-xs font-semibold text-[#F7F4EE] transition-colors text-center cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
                   <span>Solicitar Reposição no WhatsApp</span>
@@ -506,7 +506,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                   <button
                     type="button"
                     onClick={() => onOpenWhatsApp('lenha')}
-                    className="min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#6E472B] hover:bg-[#583821] px-5 py-3 text-sm font-semibold text-[#F7F4EE] transition-colors whitespace-nowrap cursor-pointer"
+                    className="min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#6E472B] hover:bg-[#583821] px-5 py-3 text-sm font-semibold text-[#F7F4EE] transition-colors text-center cursor-pointer"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
                     <span>Pedir Lenha via WhatsApp</span>
@@ -554,7 +554,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenWhatsApp('arrumacao')}
-                  className="min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E2F23] hover:bg-[#263B2C] px-4 py-2.5 text-xs font-semibold text-[#F7F4EE] transition-colors whitespace-nowrap cursor-pointer"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#1E2F23] hover:bg-[#263B2C] px-4 py-2.5 text-xs font-semibold text-[#F7F4EE] transition-colors text-center cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
                   <span>Avisar Recepção no WhatsApp</span>
