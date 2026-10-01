@@ -30,7 +30,6 @@ import { GoogleMapsIcon, WazeIcon } from './components/BrandIcons';
 import { HeroCarousel } from './components/HeroCarousel';
 import { WeatherWidget } from './components/WeatherWidget';
 import { CategoryDetailView } from './components/CategoryDetailView';
-import { PWAInstallButton } from './components/PWAInstallButton';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 
@@ -162,11 +161,8 @@ export default function App() {
             </button>
           </nav>
 
-          {/* Zone 3: 1–2 Primary Actions (Shortcut to Main Menu / Home + PWA Install) */}
+          {/* Zone 3: Shortcut to Main Menu / Home */}
           <div className="flex items-center gap-2 shrink-0">
-            <div className="hidden sm:block">
-              <PWAInstallButton />
-            </div>
             {view === 'detail' ? (
               <button
                 type="button"
@@ -208,13 +204,12 @@ export default function App() {
               <HeroCarousel>
 
               {/* Top Subtle Bar on Hero */}
-              <div className="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 pt-[calc(1.25rem+env(safe-area-inset-top))] sm:pt-[calc(1.5rem+env(safe-area-inset-top))] flex items-center justify-between gap-4">
-                <div className="flex items-center gap-2 text-xs font-medium text-[#E5DEC9]/90 tracking-wide">
+              <div className="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 pt-[calc(1.25rem+env(safe-area-inset-top))] sm:pt-[calc(1.5rem+env(safe-area-inset-top))]">
+                <div className="flex flex-wrap items-center gap-x-2 text-xs font-medium text-[#E5DEC9]/90 tracking-wide">
                   <span>Monte Verde, MG</span>
-                  <span aria-hidden="true" className="hidden sm:inline">·</span>
-                  <span className="hidden sm:inline">Serra da Mantiqueira</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Serra da Mantiqueira</span>
                 </div>
-                <PWAInstallButton />
               </div>
 
               {/* Center Hero Content */}

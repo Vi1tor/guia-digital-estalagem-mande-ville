@@ -9,40 +9,11 @@ export default defineConfig(() => {
     plugins: [
       react(),
       tailwindcss(),
+      // Service worker only, so the guide keeps working offline. No web app
+      // manifest: the guide is used in the browser and is not installable.
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['icon.svg', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png', 'pwa-maskable-512x512.png'],
-        manifest: {
-          id: '/',
-          name: 'Guia do Hóspede — Estalagem Mandeville',
-          short_name: 'Mandeville',
-          description: 'Guia digital interativo para hóspedes da Estalagem Mandeville em Monte Verde.',
-          theme_color: '#1E2F23',
-          background_color: '#F7F4EE',
-          display: 'standalone',
-          start_url: '/',
-          scope: '/',
-          icons: [
-            {
-              src: '/pwa-192x192.png',
-              sizes: '192x192',
-              type: 'image/png',
-              purpose: 'any',
-            },
-            {
-              src: '/pwa-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'any',
-            },
-            {
-              src: '/pwa-maskable-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'maskable',
-            },
-          ],
-        },
+        manifest: false,
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,svg,woff,woff2}'],
           runtimeCaching: [

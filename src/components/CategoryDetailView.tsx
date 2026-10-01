@@ -160,7 +160,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
         {categoryId === 'checkin-checkout' && (
           <>
             <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
-              <div className="flex items-start gap-3.5">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-3.5">
                 <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center text-[#1E2F23] shrink-0">
                   <CallBellIcon className="w-5 h-5 text-[#6E472B]" />
                 </div>
@@ -222,7 +222,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
         {categoryId === 'wifi' && (
           <>
             <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8 space-y-6">
-              <div className="flex items-start gap-3.5">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-3.5">
                 <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center shrink-0">
                   <WifiHighIcon className="w-5 h-5 text-[#1E2F23]" />
                 </div>
@@ -245,28 +245,28 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                       key={net.id}
                       className="rounded-xl bg-[#F7F4EE] border border-[#D8CFBE] p-4 sm:p-5"
                     >
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-[#6E472B] font-medium">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-x-2 gap-y-0.5 text-xs text-[#6E472B] font-medium">
                         <span className="font-mono">Rede 0{idx + 1}</span>
-                        <span aria-hidden="true">·</span>
+                        <span aria-hidden="true" className="hidden sm:inline">·</span>
                         <span>{net.coverage}</span>
                       </div>
 
                       <dl className="mt-3 rounded-lg bg-white border border-[#E5DEC9] p-3.5 grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="min-w-0">
                           <dt className="text-[11px] text-[#78716C]">Nome da Rede (SSID)</dt>
-                          <dd className="font-mono text-base font-semibold text-[#1C1917] break-all mt-0.5">
+                          <dd className="font-mono text-[15px] sm:text-base font-semibold text-[#1C1917] break-all mt-0.5">
                             {net.ssid}
                           </dd>
                         </div>
                         <div className="min-w-0">
                           <dt className="text-[11px] text-[#78716C]">Senha de Acesso</dt>
-                          <dd className="font-mono text-base font-semibold text-[#1E2F23] break-all mt-0.5">
+                          <dd className="font-mono text-[15px] sm:text-base font-semibold text-[#1E2F23] break-all mt-0.5">
                             {net.password}
                           </dd>
                         </div>
                       </dl>
 
-                      <div className="mt-3 grid grid-cols-2 gap-2.5">
+                      <div className="mt-3 grid grid-cols-1 min-[375px]:grid-cols-2 gap-2.5">
                         <button
                           type="button"
                           onClick={() => handleCopy(net.ssid, ssidKey)}
@@ -359,7 +359,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
           <>
             <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
               <div className="flex items-start justify-between gap-4">
-                <div className="flex items-start gap-3.5">
+                <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-3.5">
                   <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center shrink-0">
                     <WineIcon className="w-5 h-5 text-[#6E472B]" />
                   </div>
@@ -387,9 +387,9 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                         <div className="text-base font-medium text-[#1C1917]">
                           {item.name}
                         </div>
-                        <div className="flex flex-wrap items-center gap-x-2 text-xs text-[#78716C] mt-0.5">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-x-2 text-xs text-[#78716C] mt-0.5">
                           <span>{item.volume}</span>
-                          <span aria-hidden="true">·</span>
+                          <span aria-hidden="true" className="hidden sm:inline">·</span>
                           <span>{item.category}</span>
                         </div>
                       </div>
@@ -430,10 +430,10 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
 
               {/* Tally Summary & Request Button */}
               <div className="mt-6 rounded-xl bg-[#F7F4EE] border border-[#D8CFBE] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-center justify-between sm:justify-start gap-4">
-                  <div>
+                <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4">
+                  <div className="min-w-0">
                     <div className="text-xs text-[#57534E]">
-                      Estimativa anotada por você (opcional)
+                      Total anotado (opcional)
                     </div>
                     <div className="text-xl font-semibold text-[#1E2F23] font-mono tabular-nums mt-0.5">
                       R$ {minibarTotal.toFixed(2).replace('.', ',')}
@@ -443,10 +443,10 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
                     <button
                       type="button"
                       onClick={resetMinibar}
-                      className="min-h-[40px] px-3 py-1.5 rounded-lg text-xs font-medium text-[#6E472B] hover:bg-[#EFECE4] flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="min-h-[44px] px-3 py-1.5 rounded-lg text-xs font-medium text-[#6E472B] hover:bg-[#EFECE4] flex items-center gap-1.5 shrink-0 whitespace-nowrap transition-colors cursor-pointer"
                     >
-                      <ArrowCounterClockwiseIcon className="w-3.5 h-3.5" />
-                      <span>Zerar anotação</span>
+                      <ArrowCounterClockwiseIcon className="w-4 h-4" />
+                      <span>Zerar</span>
                     </button>
                   )}
                 </div>
@@ -520,7 +520,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
         {categoryId === 'arrumacao' && (
           <>
             <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
-              <div className="flex items-start gap-3.5">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-3.5">
                 <div className="w-11 h-11 rounded-xl bg-[#EFECE4] flex items-center justify-center shrink-0">
                   <BedIcon className="w-5 h-5 text-[#1E2F23]" />
                 </div>
@@ -568,7 +568,7 @@ export const CategoryDetailView: React.FC<CategoryDetailViewProps> = ({
           <>
             <div className="rounded-2xl bg-white border border-[#E5DEC9] p-5 sm:p-8">
               {/* Warm Header with Luggage (Mala) & Magnifying Glass (Lupa) icons as requested */}
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#EFECE4] border border-[#D8CFBE] flex items-center justify-center shrink-0">
                   <SuitcaseRollingIcon className="w-6 h-6 text-[#1E2F23]" />
                 </div>
